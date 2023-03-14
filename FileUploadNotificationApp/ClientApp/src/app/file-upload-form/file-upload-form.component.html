@@ -1,0 +1,45 @@
+<div>
+  <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Select a .docx file:</label>
+      <input
+        type="file"
+        formControlName="file"
+        name="file"
+        class="form-control"
+        (change)="onFileChange($event)"
+        required
+        accept=".docx"
+      />
+      <div
+        *ngIf="fileError && form.controls['file'].touched"
+        class="alert alert-danger"
+      >
+        Please select a .docx file.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input
+        type="email"
+        formControlName="email"
+        name="email"
+        class="form-control"
+        required
+      />
+      <div
+        *ngIf="form.controls['email'].touched && form.controls['email'].invalid"
+        class="alert alert-danger"
+      >
+        Please enter a valid email address.
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.controls['email'].invalid || fileError"
+    >
+      Submit
+    </button>
+  </form>
+</div>
