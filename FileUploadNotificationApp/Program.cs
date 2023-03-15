@@ -1,8 +1,14 @@
+using Azure.Storage.Blobs;
+using Microsoft.Extensions.Azure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton(x => new BlobServiceClient(
+    builder.Configuration.GetConnectionString("BlobStorage")));
+builder.Services.AddSingleton(x => x.GetService<BlobServiceClient>().GetBlobContainerClient("maincontainer"));
 
 var app = builder.Build();
 
@@ -16,6 +22,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors(configurePolicy => configurePolicy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 
 app.MapControllerRoute(

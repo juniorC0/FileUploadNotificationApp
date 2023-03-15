@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { FileService } from '../services/file.service';
 
 @Component({
   selector: 'app-file-upload-form',
@@ -18,7 +19,11 @@ export class FileUploadFormComponent implements OnInit {
   emailError: boolean = false;
   form: FormGroup;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private fileService: FileService
+  ) {
     this.form = fb.group({
       file: [null, Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -48,6 +53,17 @@ export class FileUploadFormComponent implements OnInit {
       return;
     }
 
-    console.log(this.form.controls['email'].value);
+    const formData = new FormData();
+    formData.append('email', this.form.controls['email'].value);
+    formData.append('file', this.file);
+
+    this.fileService.uploadFile(formData).subscribe(
+      () => {
+        console.log('success');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
