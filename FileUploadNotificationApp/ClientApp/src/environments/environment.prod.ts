@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'fileuploadnotificationapp20230314225531.azurewebsites.net',
 };
