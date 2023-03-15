@@ -8,6 +8,6 @@ export class FileService {
   constructor(private http: HttpClient) {}
 
   uploadFile(formData: FormData) {
-    return this.http.post('https://localhost:7271/api/upload-file', formData);
+    return this.http.post('api/upload-file', formData);
   }
 }

@@ -69,12 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "FileUploadNotificationApp:build:production",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "FileUploadNotificationApp:build:production"
             },
             "development": {
-              "browserTarget": "FileUploadNotificationApp:build:development",
-              "proxyConfig": "proxy.conf.js"
+              "browserTarget": "FileUploadNotificationApp:build:development"
             }
           },
           "defaultConfiguration": "development", 

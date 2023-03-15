@@ -59,10 +59,14 @@ export class FileUploadFormComponent implements OnInit {
 
     this.fileService.uploadFile(formData).subscribe(
       () => {
-        console.log('success');
+        alert('File added successfully');
+        this.form.controls['file'].reset();
+        this.form.controls['email'].reset();
       },
       (error) => {
-        console.log(error);
+        alert(error);
+        this.form.controls['file'].reset();
+        this.form.controls['email'].reset();
       }
     );
   }
