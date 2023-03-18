@@ -25,7 +25,6 @@ namespace FileUploadNotificationApp.Controllers
                 return BadRequest();
             }
 
-            var email = Request.Form["email"];
             var file = Request.Form.Files[0];
 
             if (Path.GetExtension(file.FileName) != ".docx")
@@ -35,6 +34,8 @@ namespace FileUploadNotificationApp.Controllers
 
             var container = _blobClient.GetContainerReference("maincontainer");
             var blob = container.GetBlockBlobReference(file.FileName);
+
+            blob.Metadata["email"] = Request.Form["email"];
 
             using (var stream = file.OpenReadStream())
             {
