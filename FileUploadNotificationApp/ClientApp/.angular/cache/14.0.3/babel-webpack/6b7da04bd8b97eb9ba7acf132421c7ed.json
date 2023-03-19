@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  apiUrl: 'fileuploadnotificationapp20230314225531.azurewebsites.net'\n};","map":null,"metadata":{},"sourceType":"module"}
