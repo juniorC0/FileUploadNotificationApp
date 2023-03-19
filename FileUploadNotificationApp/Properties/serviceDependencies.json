@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "compute.function.windows1": {
+      "group": "connections",
+      "type": "compute.function.windows"
+    },
+    "secrets1": {
+      "type": "secrets"
+    },
+    "storage1": {
+      "type": "storage",
+      "connectionId": "ConnectionStrings:BlobStorage",
+      "dynamicId": null
+    }
+  }
+}
