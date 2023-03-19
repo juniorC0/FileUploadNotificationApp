@@ -12,8 +12,9 @@ namespace FileUploadNotificationApp.Controllers
 
         public FileController()
         {
-            var storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=fileblobstorageapp;AccountKey=Tl2xiRQOoOb6rbLH4/rudKMl59cQgO/OKD7BlgA/lbqLJCL7hzTP2aoZ+8YDPRDJIhWMwN7rwFNb+ASt3I25dw==;EndpointSuffix=core.windows.net");
+            var storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=fileblobstoragename;AccountKey=rvTge/IhjtzRUodvQpgSQkxKaj6bALnamoo3VPrOfzveO5YPTHj7g4BXBsmd2DwdF30emRVs+wPD+ASt1ptX5A==;EndpointSuffix=core.windows.net");
             _blobClient = storageAccount.CreateCloudBlobClient();
+            
         }
 
         [HttpPost]

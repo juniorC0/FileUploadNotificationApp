@@ -27,9 +27,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
-app.UseCors(configurePolicy => configurePolicy.WithOrigins(
-    "https://fileuploadnotificationapp.azurewebsites.net/",
-    "https://localhost:44489")
+app.UseCors(configurePolicy => configurePolicy.AllowAnyOrigin()
     .AllowAnyMethod()
     .AllowAnyHeader());
 
